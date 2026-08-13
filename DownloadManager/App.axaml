@@ -17,5 +17,57 @@
             <Setter Property="Padding" Value="7,3"/>
             <Setter Property="MinWidth" Value="32"/>
         </Style>
+        
+        <!-- Compact Mode Styles -->
+        <Style Selector="Window.compact TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style Selector="Window.compact Button">
+            <Setter Property="Padding" Value="5,2"/>
+        </Style>
+        <Style Selector="Window.compact ListBoxItem">
+            <Setter Property="Padding" Value="4,2"/>
+        </Style>
+        
+        <!-- Light theme accent adjustments -->
+        <Style Selector="Button.accent:light">
+            <Setter Property="Background" Value="#1a5fbf"/>
+        </Style>
+        
+        <!-- Progress bar styling -->
+        <Style Selector="ProgressBar.download">
+            <Setter Property="Height" Value="8"/>
+            <Setter Property="CornerRadius" Value="4"/>
+        </Style>
+        
+        <!-- Status indicators -->
+        <Style Selector="Border.status-downloading">
+            <Setter Property="Background" Value="#2f7df620"/>
+            <Setter Property="BorderBrush" Value="#2f7df6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="6,2"/>
+        </Style>
+        <Style Selector="Border.status-completed">
+            <Setter Property="Background" Value="#4caf5020"/>
+            <Setter Property="BorderBrush" Value="#4caf50"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="6,2"/>
+        </Style>
+        <Style Selector="Border.status-paused">
+            <Setter Property="Background" Value="#ff980020"/>
+            <Setter Property="BorderBrush" Value="#ff9800"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="6,2"/>
+        </Style>
+        <Style Selector="Border.status-error">
+            <Setter Property="Background" Value="#f4433620"/>
+            <Setter Property="BorderBrush" Value="#f44336"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="6,2"/>
+        </Style>
     </Application.Styles>
 </Application>

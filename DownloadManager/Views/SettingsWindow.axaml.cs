@@ -40,6 +40,13 @@ public partial class SettingsWindow : Window
         DirBox.Text = _working.DefaultSaveDirectory;
         RetryPick.Value = _working.MaxRetries;
 
+        // Appearance
+        ThemePick.ItemsSource = Enum.GetValues<AppTheme>();
+        ThemePick.SelectedItem = _working.SelectedTheme;
+        CompactCheck.IsChecked = _working.UseCompactMode;
+        NotifyCheck.IsChecked = _working.ShowNotifications;
+        TrayCheck.IsChecked = _working.MinimizeToTray;
+
         ClipCheck.IsChecked = _working.MonitorClipboard;
         AllUrlsCheck.IsChecked = _working.CaptureAllUrls;
 
@@ -96,6 +103,12 @@ public partial class SettingsWindow : Window
         _working.DefaultSegments = (int)(SegPick.Value ?? 8);
         _working.DefaultSaveDirectory = DirBox.Text?.Trim() ?? string.Empty;
         _working.MaxRetries = (int)(RetryPick.Value ?? 8);
+
+        // Appearance
+        _working.SelectedTheme = ThemePick.SelectedItem is AppTheme t ? t : AppTheme.Dark;
+        _working.UseCompactMode = CompactCheck.IsChecked == true;
+        _working.ShowNotifications = NotifyCheck.IsChecked == true;
+        _working.MinimizeToTray = TrayCheck.IsChecked == true;
 
         _working.MonitorClipboard = ClipCheck.IsChecked == true;
         _working.CaptureAllUrls = AllUrlsCheck.IsChecked == true;

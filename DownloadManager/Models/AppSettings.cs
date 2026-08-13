@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace DownloadManager.Models;
 
 public enum ProxyMode { System, None, Custom }
+public enum AppTheme { Dark, Light, FollowSystem }
 
 public sealed class AppSettings
 {
@@ -31,4 +32,10 @@ public sealed class AppSettings
     public bool SchedulerEnabled { get; set; } = false;
     public TimeSpan ScheduleStart { get; set; } = TimeSpan.FromHours(2);
     public TimeSpan ScheduleStop { get; set; } = TimeSpan.FromHours(8);
+
+    // Appearance
+    public AppTheme SelectedTheme { get; set; } = AppTheme.Dark;
+    public bool UseCompactMode { get; set; } = false;
+    public bool ShowNotifications { get; set; } = true;
+    public bool MinimizeToTray { get; set; } = false;
 }
