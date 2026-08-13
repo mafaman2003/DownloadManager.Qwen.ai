@@ -1,1 +1,54 @@
-Nothing should be ignored based on the provided file changes. The only modified file is 'DownloadManager/App.axaml', which appears to be a source code file (likely XAML for a .NET application) and should not be ignored.
+```gitignore
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.nupkg
+*.log
+*.tmp
+
+# Dependencies
+packages/
+bin/
+obj/
+
+# Editor/IDE
+.vs/
+*.userprefs
+*.userosscache
+*.suo
+*.user
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Configuration specific to tools
+*.rsp
+*.lock.json
+
+# Environment specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generated files
+App.axaml.cs
+*.g.cs
+*.g.i.cs
+```
