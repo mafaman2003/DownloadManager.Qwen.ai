@@ -7,12 +7,10 @@
         
         <!-- Modern Color Palette -->
         <Style Selector=":root">
-            <!-- Dark Theme Colors -->
             <Setter Property="SystemAccentColor" Value="#5E81F7"/>
         </Style>
         
         <Style Selector=":root.Light">
-            <!-- Light Theme Colors - Modern Blue Accent -->
             <Setter Property="SystemAccentColor" Value="#4A7FE8"/>
         </Style>
 
@@ -53,7 +51,16 @@
             <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="Padding" Value="12,6"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Transitions" Value="Background 0.2s, Transform 0.1s"/>
+            <Animations>
+                <Animation Duration="0:0:0.2" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Background" Value="#2D2D3F"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Background" Value="#3D3D4F"/>
+                    </KeyFrame>
+                </Animation>
+            </Animations>
         </Style>
         
         <Style Selector="Button.modern:pointerover">
