@@ -51,21 +51,10 @@
             <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="Padding" Value="12,6"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Animations>
-                <Animation Duration="0:0:0.2" FillMode="Forward">
-                    <KeyFrame Cue="0%">
-                        <Setter Property="Background" Value="#2D2D3F"/>
-                    </KeyFrame>
-                    <KeyFrame Cue="100%">
-                        <Setter Property="Background" Value="#3D3D4F"/>
-                    </KeyFrame>
-                </Animation>
-            </Animations>
         </Style>
         
         <Style Selector="Button.modern:pointerover">
             <Setter Property="Background" Value="#3D3D4F"/>
-            <Setter Property="RenderTransform" Value="scaleY(1.02)"/>
         </Style>
         
         <Style Selector="Button.modern:light">
