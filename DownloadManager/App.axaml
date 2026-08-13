@@ -7,11 +7,11 @@
         
         <!-- Modern Color Palette -->
         <Style Selector="Application">
-            <Setter Property="Resources.SystemAccentColor" Value="{StaticResource SystemAccentColorDark1}"/>
+            <Setter Property="RequestedThemeVariant" Value="Dark"/>
         </Style>
         
         <Style Selector="Application.Light">
-            <Setter Property="Resources.SystemAccentColor" Value="{StaticResource SystemAccentColorLight1}"/>
+            <Setter Property="RequestedThemeVariant" Value="Light"/>
         </Style>
 
         <!-- Modern Card Style -->
