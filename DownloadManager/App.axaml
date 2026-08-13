@@ -4,70 +4,175 @@
              RequestedThemeVariant="Dark">
     <Application.Styles>
         <FluentTheme />
-        <Style Selector="TextBlock.sub">
-            <Setter Property="Foreground" Value="#9aa3b2"/>
-            <Setter Property="FontSize" Value="11"/>
-        </Style>
-        <Style Selector="Button.accent">
-            <Setter Property="Background" Value="#2f7df6"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-        </Style>
-        <Style Selector="Button.row">
-            <Setter Property="Padding" Value="7,3"/>
-            <Setter Property="MinWidth" Value="32"/>
+        
+        <!-- Modern Color Palette -->
+        <Style Selector=":root">
+            <!-- Dark Theme Colors -->
+            <Setter Property="SystemAccentColor" Value="#5E81F7"/>
         </Style>
         
+        <Style Selector=":root.Light">
+            <!-- Light Theme Colors - Modern Blue Accent -->
+            <Setter Property="SystemAccentColor" Value="#4A7FE8"/>
+        </Style>
+
+        <!-- Modern Card Style -->
+        <Style Selector="Border.card">
+            <Setter Property="Background" Value="#1E1E2E"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="BoxShadow" Value="0 4 12 #00000030"/>
+        </Style>
+        
+        <Style Selector="Border.card:light">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BoxShadow" Value="0 2 8 #00000015"/>
+        </Style>
+
+        <!-- Modern Button Styles -->
+        <Style Selector="Button.accent">
+            <Setter Property="Background" Value="#5E81F7"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="16,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        
+        <Style Selector="Button.accent:pointerover">
+            <Setter Property="Background" Value="#7B99F9"/>
+        </Style>
+        
+        <Style Selector="Button.accent:pressed">
+            <Setter Property="Background" Value="#4A6FD6"/>
+        </Style>
+        
+        <Style Selector="Button.modern">
+            <Setter Property="Background" Value="#2D2D3F"/>
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Transitions" Value="Background 0.2s, Transform 0.1s"/>
+        </Style>
+        
+        <Style Selector="Button.modern:pointerover">
+            <Setter Property="Background" Value="#3D3D4F"/>
+            <Setter Property="RenderTransform" Value="scaleY(1.02)"/>
+        </Style>
+        
+        <Style Selector="Button.modern:light">
+            <Setter Property="Background" Value="#F5F5F7"/>
+            <Setter Property="Foreground" Value="#1C1C1E"/>
+        </Style>
+        
+        <Style Selector="Button.modern:light:pointerover">
+            <Setter Property="Background" Value="#E8E8EA"/>
+        </Style>
+
+        <Style Selector="Button.row">
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="MinWidth" Value="36"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+
+        <!-- Modern TextBox Style -->
+        <Style Selector="TextBox.modern">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Background" Value="#2D2D3F"/>
+            <Setter Property="BorderBrush" Value="#3D3D4F"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        
+        <Style Selector="TextBox.modern:focus">
+            <Setter Property="BorderBrush" Value="#5E81F7"/>
+        </Style>
+        
+        <Style Selector="TextBox.modern:light">
+            <Setter Property="Background" Value="#F5F5F7"/>
+            <Setter Property="BorderBrush" Value="#D1D1D6"/>
+        </Style>
+
+        <!-- Modern ComboBox Style -->
+        <Style Selector="ComboBox.modern">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Background" Value="#2D2D3F"/>
+            <Setter Property="BorderBrush" Value="#3D3D4F"/>
+        </Style>
+        
+        <Style Selector="ComboBox.modern:light">
+            <Setter Property="Background" Value="#F5F5F7"/>
+            <Setter Property="BorderBrush" Value="#D1D1D6"/>
+        </Style>
+
         <!-- Compact Mode Styles -->
         <Style Selector="Window.compact TextBlock">
             <Setter Property="FontSize" Value="12"/>
         </Style>
         <Style Selector="Window.compact Button">
-            <Setter Property="Padding" Value="5,2"/>
+            <Setter Property="Padding" Value="8,4"/>
         </Style>
         <Style Selector="Window.compact ListBoxItem">
-            <Setter Property="Padding" Value="4,2"/>
+            <Setter Property="Padding" Value="6,3"/>
         </Style>
         
-        <!-- Light theme accent adjustments -->
-        <Style Selector="Button.accent:light">
-            <Setter Property="Background" Value="#1a5fbf"/>
-        </Style>
-        
-        <!-- Progress bar styling -->
+        <!-- Progress bar styling - Modern Gradient Look -->
         <Style Selector="ProgressBar.download">
-            <Setter Property="Height" Value="8"/>
-            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Background" Value="#2D2D3F"/>
         </Style>
         
-        <!-- Status indicators -->
+        <Style Selector="ProgressBar.download:light">
+            <Setter Property="Background" Value="#E8E8EA"/>
+        </Style>
+
+        <!-- Status indicators - Modern Pills -->
         <Style Selector="Border.status-downloading">
-            <Setter Property="Background" Value="#2f7df620"/>
-            <Setter Property="BorderBrush" Value="#2f7df6"/>
+            <Setter Property="Background" Value="#5E81F720"/>
+            <Setter Property="BorderBrush" Value="#5E81F7"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="Padding" Value="6,2"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Padding" Value="10,4"/>
         </Style>
         <Style Selector="Border.status-completed">
-            <Setter Property="Background" Value="#4caf5020"/>
-            <Setter Property="BorderBrush" Value="#4caf50"/>
+            <Setter Property="Background" Value="#34C75920"/>
+            <Setter Property="BorderBrush" Value="#34C759"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="Padding" Value="6,2"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Padding" Value="10,4"/>
         </Style>
         <Style Selector="Border.status-paused">
-            <Setter Property="Background" Value="#ff980020"/>
-            <Setter Property="BorderBrush" Value="#ff9800"/>
+            <Setter Property="Background" Value="#FF950020"/>
+            <Setter Property="BorderBrush" Value="#FF9500"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="Padding" Value="6,2"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Padding" Value="10,4"/>
         </Style>
         <Style Selector="Border.status-error">
-            <Setter Property="Background" Value="#f4433620"/>
-            <Setter Property="BorderBrush" Value="#f44336"/>
+            <Setter Property="Background" Value="#FF3B3020"/>
+            <Setter Property="BorderBrush" Value="#FF3B30"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="Padding" Value="6,2"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Padding" Value="10,4"/>
+        </Style>
+        
+        <!-- Modern ListBox Item -->
+        <Style Selector="ListBoxItem.modern">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Margin" Value="0,2"/>
+        </Style>
+        
+        <Style Selector="ListBoxItem.modern:selected">
+            <Setter Property="Background" Value="#5E81F730"/>
+        </Style>
+        
+        <!-- Modern ScrollViewer -->
+        <Style Selector="ScrollViewer.modern">
+            <Setter Property="Padding" Value="4"/>
         </Style>
     </Application.Styles>
 </Application>

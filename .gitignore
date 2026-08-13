@@ -4,28 +4,37 @@ bin/
 obj/
 *.exe
 *.dll
+*.so
+*.dylib
 *.pdb
-*.nupkg
-*.snupkg
+*.ilk
 
 # Dependencies
 packages/
-node_modules/
+.nuget/
+project.lock.json
 
 # Logs
 *.log
 
-# User-specific files
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Visual Studio
 .vs/
 *.user
 *.userosscache
 *.suo
+*.csproj.user
+*.vbproj.user
+*.vcxproj.user
 
-# Environment specific settings
-.env
-.env.local
-
-# OS generated files
-.DS_Store
-Thumbs.db
+# Avalonia (if applicable)
+**/bin/Debug/
+**/bin/Release/
+**/obj/
 ```
