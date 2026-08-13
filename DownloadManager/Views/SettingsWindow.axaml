@@ -37,6 +37,18 @@
                     </Grid>
                 </StackPanel>
 
+                <!-- Appearance -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Appearance" FontSize="15" FontWeight="SemiBold"/>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Theme" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="ThemePick" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                    </Grid>
+                    <CheckBox x:Name="CompactCheck" Content="Use compact mode (smaller UI elements)"/>
+                    <CheckBox x:Name="NotifyCheck" Content="Show download completion notifications"/>
+                    <CheckBox x:Name="TrayCheck" Content="Minimize to system tray instead of closing"/>
+                </StackPanel>
+
                 <!-- Clipboard -->
                 <StackPanel Spacing="8">
                     <TextBlock Text="Clipboard" FontSize="15" FontWeight="SemiBold"/>

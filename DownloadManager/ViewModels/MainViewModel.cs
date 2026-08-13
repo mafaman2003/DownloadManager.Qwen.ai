@@ -59,9 +59,11 @@ public sealed class MainViewModel : ObservableObject
     private static Window? MainWindow =>
         (Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
 
-    public MainViewModel()
+    public MainViewModel() : this(AppStore.LoadSettings()) { }
+
+    public MainViewModel(AppSettings settings)
     {
-        _settings = AppStore.LoadSettings();
+        _settings = settings;
         _engine = new DownloadEngine(_settings);
 
         _engine.BytesReceived += (id, n) => _received.AddOrUpdate(id, n, (_, v) => v + n);
@@ -395,6 +397,20 @@ public sealed class MainViewModel : ObservableObject
     {
         _engine.ApplySettings(_settings);
         if (_settings.MonitorClipboard) _clipboard.Start(); else _clipboard.Stop();
+        
+        // Apply theme change
+        if (Application.Current is App app)
+            app.UpdateTheme(_settings.SelectedTheme);
+        
+        // Apply compact mode
+        if (MainWindow != null)
+        {
+            if (_settings.UseCompactMode)
+                MainWindow.Classes.Add("compact");
+            else
+                MainWindow.Classes.Remove("compact");
+        }
+        
         ProcessQueue();
     }
 
