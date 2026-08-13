@@ -1,0 +1,105 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="using:DownloadManager.Models"
+        x:Class="DownloadManager.MainWindow"
+        Title="Avalonia Download Manager"
+        Width="1080" Height="640"
+        MinWidth="900" MinHeight="420"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel>
+        <!-- Toolbar -->
+        <Border DockPanel.Dock="Top" Background="#20242e" Padding="12,8"
+                BorderBrush="#2e3440" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal" Spacing="6">
+                <Button Classes="accent" Command="{Binding AddCommand}"
+                        Content="＋  New Download" Padding="12,6"/>
+                <Border Width="1" Margin="6,2" Background="#2e3440"/>
+                <Button Command="{Binding StartAllCommand}" Content="▶  Start All" Padding="10,6"/>
+                <Button Command="{Binding PauseAllCommand}" Content="❚❚  Pause All" Padding="10,6"/>
+                <Button Command="{Binding ClearFinishedCommand}" Content="Clear Finished" Padding="10,6"/>
+                <Button Command="{Binding SettingsCommand}" Content="⚙  Settings" Padding="10,6"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Status bar -->
+        <Border DockPanel.Dock="Bottom" Background="#20242e" Padding="12,6"
+                BorderBrush="#2e3440" BorderThickness="0,1,0,0">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Right" Classes="sub" VerticalAlignment="Center"
+                           Text="{Binding CountsText}"/>
+                <TextBlock Classes="sub" VerticalAlignment="Center"
+                           Text="{Binding TotalSpeedText}"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Download list -->
+        <DockPanel>
+            <Grid DockPanel.Dock="Top" Margin="16,10,16,6"
+                  ColumnDefinitions="36,*,250,120,110,80,180">
+                <TextBlock Grid.Column="1" Classes="sub" FontWeight="SemiBold" Text="FILE"/>
+                <TextBlock Grid.Column="2" Classes="sub" FontWeight="SemiBold" Text="PROGRESS"/>
+                <TextBlock Grid.Column="3" Classes="sub" FontWeight="SemiBold" Text="SIZE"/>
+                <TextBlock Grid.Column="4" Classes="sub" FontWeight="SemiBold" Text="SPEED"/>
+                <TextBlock Grid.Column="5" Classes="sub" FontWeight="SemiBold" Text="ETA"/>
+                <TextBlock Grid.Column="6" Classes="sub" FontWeight="SemiBold" Text="ACTIONS"
+                           HorizontalAlignment="Right"/>
+            </Grid>
+
+            <Panel>
+                <ScrollViewer>
+                    <ItemsControl ItemsSource="{Binding Downloads}" Margin="0,0,0,8">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="m:DownloadItem">
+                                <Border Padding="16,9" BorderBrush="#262b36" BorderThickness="0,0,0,1">
+                                    <Grid ColumnDefinitions="36,*,250,120,110,80,180" VerticalAlignment="Center">
+                                        <TextBlock Grid.Column="0" Text="{Binding StatusIcon}" FontSize="15"
+                                                   VerticalAlignment="Center" Foreground="#7aa2ff"/>
+                                        <StackPanel Grid.Column="1" Spacing="2" Margin="0,0,12,0">
+                                            <TextBlock Text="{Binding FileName}" FontWeight="SemiBold"
+                                                       TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding Url}" Classes="sub"
+                                                       TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding Error}" Classes="sub" Foreground="#ff7676"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       IsVisible="{Binding HasError}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" Spacing="4" VerticalAlignment="Center" Margin="0,0,12,0">
+                                            <ProgressBar Height="7" Minimum="0" Maximum="100" CornerRadius="3"
+                                                         Value="{Binding Progress}"
+                                                         IsIndeterminate="{Binding IsIndeterminate}"/>
+                                            <TextBlock Text="{Binding ProgressLine}" Classes="sub"
+                                                       TextTrimming="CharacterEllipsis"/>
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="3" Text="{Binding SizeText}" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding SpeedText}" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                        <TextBlock Grid.Column="5" Text="{Binding EtaText}" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                        <StackPanel Grid.Column="6" Orientation="Horizontal" Spacing="4" HorizontalAlignment="Right">
+                                            <Button Classes="row" Content="▶" ToolTip.Tip="Start / Resume"
+                                                    Command="{Binding StartCommand}" IsVisible="{Binding CanStart}"/>
+                                            <Button Classes="row" Content="❚❚" ToolTip.Tip="Pause"
+                                                    Command="{Binding PauseCommand}" IsVisible="{Binding IsDownloading}"/>
+                                            <Button Classes="row" Content="✓" ToolTip.Tip="Verify checksum"
+                                                    Command="{Binding VerifyCommand}" IsVisible="{Binding CanVerify}"/>
+                                            <Button Classes="row" Content="Open" ToolTip.Tip="Open file location"
+                                                    Command="{Binding OpenFolderCommand}"/>
+                                            <Button Classes="row" Content="✕" ToolTip.Tip="Delete"
+                                                    Command="{Binding DeleteCommand}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <StackPanel IsVisible="{Binding IsEmpty}" Spacing="8"
+                            HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="↓" FontSize="42" HorizontalAlignment="Center" Foreground="#3b4252"/>
+                    <TextBlock Classes="sub" HorizontalAlignment="Center"
+                               Text="No downloads yet — click “New Download” to get started."/>
+                </StackPanel>
+            </Panel>
+        </DockPanel>
+    </DockPanel>
+</Window>

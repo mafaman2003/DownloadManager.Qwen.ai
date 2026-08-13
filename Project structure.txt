@@ -1,0 +1,20 @@
+DownloadManager/
+└── DownloadManager/
+    ├── DownloadManager.csproj
+    ├── Program.cs
+    ├── App.axaml / App.axaml.cs
+    ├── MainWindow.axaml / MainWindow.axaml.cs
+    ├── Models/
+    │   ├── DownloadStatus.cs
+    │   ├── SegmentInfo.cs
+    │   ├── DownloadItem.cs
+    │   └── Format.cs
+    ├── Services/
+    │   ├── DownloadEngine.cs
+    │   └── AppStore.cs
+    ├── ViewModels/
+    │   ├── ObservableObject.cs
+    │   ├── RelayCommand.cs
+    │   └── MainViewModel.cs
+    └── Views/
+        └── AddDownloadWindow.axaml / .axaml.cs

@@ -1,0 +1,111 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="DownloadManager.Views.SettingsWindow"
+        Title="Settings"
+        Width="700" Height="760"
+        WindowStartupLocation="CenterOwner">
+
+    <DockPanel Margin="18">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Spacing="8" Margin="0,14,0,0">
+            <Button Content="Cancel" Click="OnCancel" Padding="14,7" IsCancel="True"/>
+            <Button Classes="accent" Content="Save" Click="OnSave" Padding="14,7" IsDefault="True"/>
+        </StackPanel>
+
+        <ScrollViewer>
+            <StackPanel Spacing="20">
+
+                <!-- General -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="General" FontSize="15" FontWeight="SemiBold"/>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Max concurrent downloads" VerticalAlignment="Center"/>
+                        <NumericUpDown x:Name="MaxConcPick" Grid.Column="1" Minimum="1" Maximum="20"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Default segments per download" VerticalAlignment="Center"/>
+                        <NumericUpDown x:Name="SegPick" Grid.Column="1" Minimum="1" Maximum="32"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="230,*,Auto">
+                        <TextBlock Text="Default save folder" VerticalAlignment="Center"/>
+                        <TextBox x:Name="DirBox" Grid.Column="1" Margin="0,0,8,0" Watermark="(Downloads)"/>
+                        <Button Grid.Column="2" Click="OnBrowse" Content="Browse…" Padding="10,6"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Max retries per segment" VerticalAlignment="Center"/>
+                        <NumericUpDown x:Name="RetryPick" Grid.Column="1" Minimum="0" Maximum="30"/>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Clipboard -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Clipboard" FontSize="15" FontWeight="SemiBold"/>
+                    <CheckBox x:Name="ClipCheck" Content="Watch clipboard for download URLs"/>
+                    <CheckBox x:Name="AllUrlsCheck" Content="Capture any http(s) URL (not just file links)"/>
+                </StackPanel>
+
+                <!-- Speed limits -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Speed limits" FontSize="15" FontWeight="SemiBold"/>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Global limit (KB/s, 0 = unlimited)" VerticalAlignment="Center"/>
+                        <NumericUpDown x:Name="GlobalLimitPick" Grid.Column="1" Minimum="0" Maximum="10000000"/>
+                    </Grid>
+                    <TextBlock Text="Per-site limits:" Classes="sub"/>
+                    <ListBox x:Name="HostList" Height="100">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Display}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <DockPanel>
+                        <Button DockPanel.Dock="Right" Click="OnRemoveHost" Content="Remove" Margin="8,0,0,0"/>
+                        <Button DockPanel.Dock="Right" Click="OnAddHost" Content="Add rule" Margin="8,0,0,0"/>
+                        <NumericUpDown x:Name="HostLimitPick" DockPanel.Dock="Right" Width="140"
+                                       Minimum="1" Maximum="10000000" Value="1024"
+                                       ToolTip.Tip="Limit in KB/s"/>
+                        <TextBox x:Name="HostBox" Watermark="host, e.g. mirrors.example.com"/>
+                    </DockPanel>
+                </StackPanel>
+
+                <!-- Proxy -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Proxy" FontSize="15" FontWeight="SemiBold"/>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Mode" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="ProxyModePick" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Proxy URL" VerticalAlignment="Center"/>
+                        <TextBox x:Name="ProxyUrlBox" Grid.Column="1" Watermark="http://proxy.host:8080"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Username" VerticalAlignment="Center"/>
+                        <TextBox x:Name="ProxyUserBox" Grid.Column="1"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="230,*">
+                        <TextBlock Text="Password" VerticalAlignment="Center"/>
+                        <TextBox x:Name="ProxyPassBox" Grid.Column="1" PasswordChar="*"/>
+                    </Grid>
+                    <TextBlock Classes="sub" Text="System = OS proxy settings. Changes apply to new connections."/>
+                </StackPanel>
+
+                <!-- Scheduler -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Scheduler" FontSize="15" FontWeight="SemiBold"/>
+                    <CheckBox x:Name="SchedCheck" Content="Enable daily schedule"/>
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <TextBlock Text="Start queue at" VerticalAlignment="Center"/>
+                        <TimePicker x:Name="StartPick" ClockIdentifier="24HourClock"/>
+                        <TextBlock Text="Pause all at" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TimePicker x:Name="StopPick" ClockIdentifier="24HourClock"/>
+                    </StackPanel>
+                    <TextBlock Classes="sub"
+                               Text="Fires once per day. Stop time must be later than start time. If the app opens inside the window, the start action fires once."/>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
