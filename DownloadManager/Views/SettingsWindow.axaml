@@ -2,120 +2,211 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="DownloadManager.Views.SettingsWindow"
         Title="Settings"
-        Width="700" Height="760"
-        WindowStartupLocation="CenterOwner">
+        Width="750" Height="800"
+        WindowStartupLocation="CenterOwner"
+        Classes="modern">
 
-    <DockPanel Margin="18">
+    <DockPanel Margin="24">
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
-                    HorizontalAlignment="Right" Spacing="8" Margin="0,14,0,0">
-            <Button Content="Cancel" Click="OnCancel" Padding="14,7" IsCancel="True"/>
-            <Button Classes="accent" Content="Save" Click="OnSave" Padding="14,7" IsDefault="True"/>
+                    HorizontalAlignment="Right" Spacing="12" Margin="0,20,0,0">
+            <Button Classes="modern" Content="Cancel" Click="OnCancel" Padding="16,8" IsCancel="True"/>
+            <Button Classes="accent" Content="Save Changes" Click="OnSave" Padding="16,8" IsDefault="True"/>
         </StackPanel>
 
-        <ScrollViewer>
-            <StackPanel Spacing="20">
+        <ScrollViewer Classes="modern">
+            <StackPanel Spacing="24">
+
+                <!-- Theme Preview Section -->
+                <Border Classes="card">
+                    <StackPanel Spacing="16">
+                        <TextBlock Text="Theme Preview" FontSize="16" FontWeight="SemiBold" 
+                                   Foreground="#5E81F7"/>
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" Margin="0,8">
+                            <!-- Dark Preview Card -->
+                            <Border Grid.Row="1" Grid.Column="0" 
+                                    Background="#1E1E2E" CornerRadius="10" 
+                                    Padding="16" Margin="0,0,8,0">
+                                <StackPanel Spacing="10">
+                                    <TextBlock Text="Dark Theme" FontWeight="SemiBold" 
+                                               Foreground="White" FontSize="14"/>
+                                    <TextBlock Text="Modern dark appearance" 
+                                               Classes="sub" FontSize="12"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,4">
+                                        <Button Classes="accent" Content="Primary" Padding="8,4"/>
+                                        <Button Classes="modern" Content="Secondary" Padding="8,4"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Light Preview Card -->
+                            <Border Grid.Row="1" Grid.Column="1" 
+                                    Background="#FFFFFF" CornerRadius="10" 
+                                    Padding="16" Margin="8,0,0,0"
+                                    BoxShadow="0 2 8 #00000015">
+                                <StackPanel Spacing="10">
+                                    <TextBlock Text="Light Theme" FontWeight="SemiBold" 
+                                               Foreground="#1C1C1E" FontSize="14"/>
+                                    <TextBlock Text="Clean and bright" 
+                                               Foreground="#8E8E93" FontSize="12"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,4">
+                                        <Button Classes="accent" Content="Primary" Padding="8,4"/>
+                                        <Button Classes="modern" Content="Secondary" Padding="8,4" Classes="modern:light"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </Border>
 
                 <!-- General -->
-                <StackPanel Spacing="8">
-                    <TextBlock Text="General" FontSize="15" FontWeight="SemiBold"/>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Max concurrent downloads" VerticalAlignment="Center"/>
-                        <NumericUpDown x:Name="MaxConcPick" Grid.Column="1" Minimum="1" Maximum="20"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Default segments per download" VerticalAlignment="Center"/>
-                        <NumericUpDown x:Name="SegPick" Grid.Column="1" Minimum="1" Maximum="32"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="230,*,Auto">
-                        <TextBlock Text="Default save folder" VerticalAlignment="Center"/>
-                        <TextBox x:Name="DirBox" Grid.Column="1" Margin="0,0,8,0" Watermark="(Downloads)"/>
-                        <Button Grid.Column="2" Click="OnBrowse" Content="Browse…" Padding="10,6"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Max retries per segment" VerticalAlignment="Center"/>
-                        <NumericUpDown x:Name="RetryPick" Grid.Column="1" Minimum="0" Maximum="30"/>
-                    </Grid>
-                </StackPanel>
+                <Border Classes="card">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="General" FontSize="16" FontWeight="SemiBold" 
+                                   Foreground="#5E81F7"/>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Max concurrent downloads" VerticalAlignment="Center" 
+                                       Foreground="#E0E0E0"/>
+                            <NumericUpDown x:Name="MaxConcPick" Grid.Column="1" Minimum="1" Maximum="20" 
+                                           Classes="modern"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Default segments per download" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <NumericUpDown x:Name="SegPick" Grid.Column="1" Minimum="1" Maximum="32"
+                                           Classes="modern"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="250,*,Auto">
+                            <TextBlock Text="Default save folder" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <TextBox x:Name="DirBox" Grid.Column="1" Margin="0,0,8,0" 
+                                     Watermark="Downloads" Classes="modern"/>
+                            <Button Grid.Column="2" Click="OnBrowse" Content="Browse…" 
+                                    Padding="12,6" Classes="modern"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Max retries per segment" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <NumericUpDown x:Name="RetryPick" Grid.Column="1" Minimum="0" Maximum="30"
+                                           Classes="modern"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
 
                 <!-- Appearance -->
-                <StackPanel Spacing="8">
-                    <TextBlock Text="Appearance" FontSize="15" FontWeight="SemiBold"/>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Theme" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="ThemePick" Grid.Column="1" HorizontalAlignment="Stretch"/>
-                    </Grid>
-                    <CheckBox x:Name="CompactCheck" Content="Use compact mode (smaller UI elements)"/>
-                    <CheckBox x:Name="NotifyCheck" Content="Show download completion notifications"/>
-                    <CheckBox x:Name="TrayCheck" Content="Minimize to system tray instead of closing"/>
-                </StackPanel>
+                <Border Classes="card">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Appearance" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="#5E81F7"/>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Theme" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <ComboBox x:Name="ThemePick" Grid.Column="1" HorizontalAlignment="Stretch"
+                                      Classes="modern"/>
+                        </Grid>
+                        <CheckBox x:Name="CompactCheck" Content="Use compact mode (smaller UI elements)"
+                                  FontSize="13"/>
+                        <CheckBox x:Name="NotifyCheck" Content="Show download completion notifications"
+                                  FontSize="13"/>
+                        <CheckBox x:Name="TrayCheck" Content="Minimize to system tray instead of closing"
+                                  FontSize="13"/>
+                    </StackPanel>
+                </Border>
 
                 <!-- Clipboard -->
-                <StackPanel Spacing="8">
-                    <TextBlock Text="Clipboard" FontSize="15" FontWeight="SemiBold"/>
-                    <CheckBox x:Name="ClipCheck" Content="Watch clipboard for download URLs"/>
-                    <CheckBox x:Name="AllUrlsCheck" Content="Capture any http(s) URL (not just file links)"/>
-                </StackPanel>
+                <Border Classes="card">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Clipboard" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="#5E81F7"/>
+                        <CheckBox x:Name="ClipCheck" Content="Watch clipboard for download URLs"
+                                  FontSize="13"/>
+                        <CheckBox x:Name="AllUrlsCheck" Content="Capture any http(s) URL (not just file links)"
+                                  FontSize="13"/>
+                    </StackPanel>
+                </Border>
 
                 <!-- Speed limits -->
-                <StackPanel Spacing="8">
-                    <TextBlock Text="Speed limits" FontSize="15" FontWeight="SemiBold"/>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Global limit (KB/s, 0 = unlimited)" VerticalAlignment="Center"/>
-                        <NumericUpDown x:Name="GlobalLimitPick" Grid.Column="1" Minimum="0" Maximum="10000000"/>
-                    </Grid>
-                    <TextBlock Text="Per-site limits:" Classes="sub"/>
-                    <ListBox x:Name="HostList" Height="100">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Display}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <DockPanel>
-                        <Button DockPanel.Dock="Right" Click="OnRemoveHost" Content="Remove" Margin="8,0,0,0"/>
-                        <Button DockPanel.Dock="Right" Click="OnAddHost" Content="Add rule" Margin="8,0,0,0"/>
-                        <NumericUpDown x:Name="HostLimitPick" DockPanel.Dock="Right" Width="140"
-                                       Minimum="1" Maximum="10000000" Value="1024"
-                                       ToolTip.Tip="Limit in KB/s"/>
-                        <TextBox x:Name="HostBox" Watermark="host, e.g. mirrors.example.com"/>
-                    </DockPanel>
-                </StackPanel>
+                <Border Classes="card">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Speed Limits" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="#5E81F7"/>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Global limit (KB/s, 0 = unlimited)" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <NumericUpDown x:Name="GlobalLimitPick" Grid.Column="1" Minimum="0" Maximum="10000000"
+                                           Classes="modern"/>
+                        </Grid>
+                        <TextBlock Text="Per-site limits:" Foreground="#9aa3b2" FontSize="12"/>
+                        <ListBox x:Name="HostList" Height="120" Classes="modern">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Display}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right" Click="OnRemoveHost" Content="Remove" 
+                                    Margin="8,0,0,0" Classes="modern"/>
+                            <Button DockPanel.Dock="Right" Click="OnAddHost" Content="Add Rule" 
+                                    Margin="8,0,0,0" Classes="modern"/>
+                            <NumericUpDown x:Name="HostLimitPick" DockPanel.Dock="Right" Width="140"
+                                           Minimum="1" Maximum="10000000" Value="1024"
+                                           ToolTip.Tip="Limit in KB/s" Classes="modern"/>
+                            <TextBox x:Name="HostBox" Watermark="host, e.g. mirrors.example.com"
+                                     Classes="modern"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
 
                 <!-- Proxy -->
-                <StackPanel Spacing="8">
-                    <TextBlock Text="Proxy" FontSize="15" FontWeight="SemiBold"/>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Mode" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="ProxyModePick" Grid.Column="1" HorizontalAlignment="Stretch"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Proxy URL" VerticalAlignment="Center"/>
-                        <TextBox x:Name="ProxyUrlBox" Grid.Column="1" Watermark="http://proxy.host:8080"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Username" VerticalAlignment="Center"/>
-                        <TextBox x:Name="ProxyUserBox" Grid.Column="1"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="230,*">
-                        <TextBlock Text="Password" VerticalAlignment="Center"/>
-                        <TextBox x:Name="ProxyPassBox" Grid.Column="1" PasswordChar="*"/>
-                    </Grid>
-                    <TextBlock Classes="sub" Text="System = OS proxy settings. Changes apply to new connections."/>
-                </StackPanel>
+                <Border Classes="card">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Proxy" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="#5E81F7"/>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Mode" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <ComboBox x:Name="ProxyModePick" Grid.Column="1" HorizontalAlignment="Stretch"
+                                      Classes="modern"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Proxy URL" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <TextBox x:Name="ProxyUrlBox" Grid.Column="1" 
+                                     Watermark="http://proxy.host:8080" Classes="modern"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Username" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <TextBox x:Name="ProxyUserBox" Grid.Column="1" Classes="modern"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="250,*">
+                            <TextBlock Text="Password" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <TextBox x:Name="ProxyPassBox" Grid.Column="1" PasswordChar="*" Classes="modern"/>
+                        </Grid>
+                        <TextBlock Foreground="#9aa3b2" FontSize="12"
+                                   Text="System = OS proxy settings. Changes apply to new connections."/>
+                    </StackPanel>
+                </Border>
 
                 <!-- Scheduler -->
-                <StackPanel Spacing="8">
-                    <TextBlock Text="Scheduler" FontSize="15" FontWeight="SemiBold"/>
-                    <CheckBox x:Name="SchedCheck" Content="Enable daily schedule"/>
-                    <StackPanel Orientation="Horizontal" Spacing="12">
-                        <TextBlock Text="Start queue at" VerticalAlignment="Center"/>
-                        <TimePicker x:Name="StartPick" ClockIdentifier="24HourClock"/>
-                        <TextBlock Text="Pause all at" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <TimePicker x:Name="StopPick" ClockIdentifier="24HourClock"/>
+                <Border Classes="card">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Scheduler" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="#5E81F7"/>
+                        <CheckBox x:Name="SchedCheck" Content="Enable daily schedule" FontSize="13"/>
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <TextBlock Text="Start queue at" VerticalAlignment="Center"
+                                       Foreground="#E0E0E0"/>
+                            <TimePicker x:Name="StartPick" ClockIdentifier="24HourClock"/>
+                            <TextBlock Text="Pause all at" VerticalAlignment="Center" 
+                                       Margin="16,0,0,0" Foreground="#E0E0E0"/>
+                            <TimePicker x:Name="StopPick" ClockIdentifier="24HourClock"/>
+                        </StackPanel>
+                        <TextBlock Foreground="#9aa3b2" FontSize="12"
+                                   Text="Fires once per day. Stop time must be later than start time. If the app opens inside the window, the start action fires once."/>
                     </StackPanel>
-                    <TextBlock Classes="sub"
-                               Text="Fires once per day. Stop time must be later than start time. If the app opens inside the window, the start action fires once."/>
-                </StackPanel>
+                </Border>
 
             </StackPanel>
         </ScrollViewer>
