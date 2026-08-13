@@ -117,8 +117,11 @@
                         <TextBlock Text="↓" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"
                                    Foreground="#5E81F7"/>
                     </Border>
-                    <TextBlock Foreground="#9aa3b2" HorizontalAlignment="Center" FontSize="14"
-                               Text="No downloads yet — click "New Download" to get started."/>
+                    <TextBlock Foreground="#9aa3b2" HorizontalAlignment="Center" FontSize="14">
+                        <Run Text="No downloads yet — click "/>
+                        <Run Text="New Download" FontWeight="Bold"/>
+                        <Run Text=" to get started."/>
+                    </TextBlock>
                 </StackPanel>
             </Panel>
         </DockPanel>
