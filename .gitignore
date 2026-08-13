@@ -1,40 +1,109 @@
-```
 # Build artifacts
-bin/
-obj/
 *.exe
 *.dll
 *.so
-*.dylib
-*.pdb
-*.ilk
+*.a
+*.obj
+*.out
+bin/
+obj/
+Debug/
+Release/
+build/
+dist/
 
 # Dependencies
 packages/
-.nuget/
-project.lock.json
+node_modules/
+vendor/
 
-# Logs
+# Logs and temp files
 *.log
+*.tmp
+*.temp
 
-# OS generated files
-.DS_Store
+# Editors
+.vscode/
+.idea/
+*.userprefs
+*.userosscache
+*.user
+*.suo
+*.useroptions
+
+# OS specific
 Thumbs.db
+.DS_Store
 ehthumbs.db
 Icon?
 desktop.ini
 
-# Visual Studio
-.vs/
-*.user
+# Configuration
+*.userprefs
 *.userosscache
-*.suo
-*.csproj.user
-*.vbproj.user
-*.vcxproj.user
 
-# Avalonia (if applicable)
-**/bin/Debug/
-**/bin/Release/
-**/obj/
-```
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Python specific (if applicable)
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.egg-info/
+.eggs/
+
+# MyPy cache
+.mypy_cache/
+# PyTest cache
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+
+# Temporary files
+*.tmp
+*~
+.swp
+.swo
+
+# Archives
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
